@@ -1,0 +1,17 @@
+https://ztndata.blob.core.windows.net/yatesbury/migration.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_attack_all.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_attack_partial_limited_attacks.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_attack_partial.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_botnet.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_distributed_syn_portscan.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_distributed_tcp_portscan.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_distributed_udp_portscan.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_dns_amplification_high_rate.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_dns_amplification_low_rate.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_portscan.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_synflood_ddos.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_synflood.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/normal_udp_ddos.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/takedown.tar.gz
+https://ztndata.blob.core.windows.net/yatesbury/varying_load.tar.gz
