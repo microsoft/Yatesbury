@@ -1,14 +1,69 @@
-# Project
+# Yatesbury: A Benchmark for East-West Network Security
 
-> This repo has been populated by an initial template to help get you started. Please
-> make sure to update the content to build a great experience for community-building.
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-As the maintainer of this project, please make a few updates:
+This dataset serves as a benchmark for evaluting the performance and efficiency of anomaly detectors in east-west data center network traffic. Detailed information about the benchmark can be found in our [NetVigil paper](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/).
 
-- Improving this README.MD file to provide a great experience
-- Updating SUPPORT.MD with content about this project's support experience
-- Understanding the security reporting process in SECURITY.MD
-- Remove this section from the README
+The dataset includes 13 distinct scenarios, each designated as an attack or a normal operation. For each scenario, a web-based [e-commerce application](https://github.com/GoogleCloudPlatform/microservices-demo) is utilized to generate normal traffic patterns. Simultaneously, attacks are carried out using one or more compromised, malicious nodes. Traffic traces, sourced from [NSG flow logs](https://learn.microsoft.com/en-us/azure/network-watcher/nsg-flow-logs-overview), are processed and converted into CSV files containing only the relevant properties.  
+
+
+## Dataset Description
+
+The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy), a command-line utility designed for copying data to and from Microsoft Azure storage services.  
+
+After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`. The schema for these files is as follows:  
+
+
+### nsg.csv
+
+1. `time`: Time in UTC when the event was logged.
+2. `Source IP`: Source IP address.
+3. `Destination IP`: Destination IP address.
+4. `Source port`: Source port.
+5. `Destination port`: Destination port.
+6. `Protocol`: Protocol of the flow. Valid values are `T` for TCP and `U` for UDP.
+7. `Traffic flow`: Direction of the traffic flow. Valid values are `I` for inbound and `O` for outbound.
+8. `Traffic decision`: Whether traffic was allowed or denied. Valid values are `A` for allowed and `D` for denied.
+9. `Flow State`: State of the flow. Possible states are:
+    * `B`: Begin, when a flow is created. Statistics aren't provided.
+    * `C`: Continuing for an ongoing flow. Statistics are provided at 5-minute intervals.
+    * `E`: End, when a flow is terminated. Statistics are provided.
+10. `Packets sent`: Total number of TCP packets sent from source to destination since the last update.
+11. `Bytes sent`: Total number of TCP packet bytes sent from source to destination since the last update. Packet bytes include the packet header and payload.
+12. `Packets received`: Total number of TCP packets sent from destination to source since the last update.
+13. `Bytes received`: Total number of TCP packet bytes sent from destination to source since the last update. Packet bytes include packet header and payload.
+
+
+### label.csv
+
+1. `Source IP`: Source IP address.
+2. `Destination IP`: Destination IP address.
+3. `time`: The starting time of each 2-minute window.  
+4. `label`: A `0` indicates normal operation for this IP pair during the 2-minute window, while a `1` denotes the presence of an attack.  
+
+## Attack Scenarios
+
+| Attack Description                  | Description                                                                                      | # flows | Ratio malicious |  
+|-------------------------------------|--------------------------------------------------------------------------------------------------|---------|-----------------|  
+| Vertical Port Scan                  | Run an exhaustive scan of open ports                                                             | 1429    | 0.0265          |  
+| SYN Flood DoS attack                | DoS attack where connections are rapidly initialized but not completed                           | 2817    | 0.0184          |  
+| SYN Flood DDoS                      | DoS attack where connections are rapidly initialized but not completed (multiple attackers)      | 2437    | 0.0439          |  
+| UDP DDoS                            | DoS attack with UDP packets (multiple attackers)                                                 | 1473    | 0.0081          |  
+| Distributed Stealth Port Scan       | Run a targeted stealth scan of several key ports across many nodes with SYN packets              | 4069    | 0.0058          |  
+| Distributed Port Scan               | Run a targeted scan of several key ports across many nodes                                       | 4054    | 0.0051          |  
+| Distributed UDP Port Scan           | Run a targeted stealth scan of several key across many nodes with UDP packets                    | 4319    | 0.0050          |  
+| Infection Monkey 1                  | Scans key ports and launches network exploits                                                    | 2768    | 0.0122          |  
+| Infection Monkey 2                  | Scans key ports and launches network exploits (target limited number of hosts)                   | 1490    | 0.0107          |  
+| Infection Monkey 3                  | Scans key ports and launches network exploits (mount limited number of exploits)                 | 4677    | 0.0027          |  
+| C&C communication                   | Compromised nodes receive commands, heartbeats, and file updates from C&C server                 | 2163    | 0.0254          |  
+| DNS amplification                   | Attackers send DNS requests and direct responses to victim                                       | 4410    | 0.0825          |  
+
+## Reference Paper
+
+If you use our benchmark in your work, we would appreciate a reference to the following paper:
+
+Kevin Hsieh, Mike Wong, Santiago Segarra, Sathiya Kumaran Mani, Trevor Eberl, Anatoliy Panasyuk, Ravi Netravali, Ranveer Chandra, and Srikanth Kandula. [NetVigil: Robust and Low-Cost Anomaly Detection for East-West Data Center Security](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/). *USENIX Symposium on Networked Systems Design and Implementation (NSDI), 2024*.
+
 
 ## Contributing
 
