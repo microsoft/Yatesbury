@@ -1,5 +1,7 @@
 # Yatesbury: A Benchmark for East-West Network Security
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 This dataset serves as a benchmark for evaluting the performance and efficiency of anomaly detectors in east-west data center network traffic. Detailed information about the benchmark can be found in our [NetVigil paper](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/).
 
 The dataset includes 13 distinct scenarios, each designated as an attack or a normal operation. For each scenario, a web-based [e-commerce application](https://github.com/GoogleCloudPlatform/microservices-demo) is utilized to generate normal traffic patterns. Simultaneously, attacks are carried out using one or more compromised, malicious nodes. Traffic traces, sourced from [NSG flow logs](https://learn.microsoft.com/en-us/azure/network-watcher/nsg-flow-logs-overview), are processed and converted into CSV files containing only the relevant properties.  
@@ -9,7 +11,8 @@ The dataset includes 13 distinct scenarios, each designated as an attack or a no
 
 The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy), a command-line utility designed for copying data to and from Microsoft Azure storage services.  
 
-Each folder corresponds to either a normal or attack scenario and contains two files: nsg.csv and label.csv. The schema for these files is as follows:
+After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`. The schema for these files is as follows:  
+
 
 ### nsg.csv
 
