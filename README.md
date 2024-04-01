@@ -9,7 +9,7 @@ The dataset includes 13 distinct scenarios, each designated as an attack or a no
 
 ## Dataset Description
 
-The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using [AzCopy](https://learn.microsoft.com/en-us/azure/storage/common/storage-ref-azcopy), a command-line utility designed for copying data to and from Microsoft Azure storage services.  
+The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using `wget -i Dataset.txt` to download the dataset. The dataset is compressed in a `.tar.gz` format and each file represents a distinct scenario.
 
 After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`. The schema for these files is as follows:  
 
