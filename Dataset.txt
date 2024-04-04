@@ -3,6 +3,9 @@ https://ztnrelease.z5.web.core.windows.net/normal_attack_all.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_attack_partial_limited_attacks.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_attack_partial.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_botnet.tar.gz
+https://ztnrelease.z5.web.core.windows.net/normal_db_accesses4.tar.gz
+https://ztnrelease.z5.web.core.windows.net/normal_db_injection.tar.gz
+https://ztnrelease.z5.web.core.windows.net/normal_db_unauth_access.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_distributed_syn_portscan.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_distributed_tcp_portscan.tar.gz
 https://ztnrelease.z5.web.core.windows.net/normal_distributed_udp_portscan.tar.gz
