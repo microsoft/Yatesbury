@@ -4,14 +4,14 @@
 
 This dataset serves as a benchmark for evaluting the performance and efficiency of anomaly detectors in east-west data center network traffic. Detailed information about the benchmark can be found in our [NetVigil paper](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/).
 
-The dataset includes 13 distinct scenarios, each designated as an attack or a normal operation. For each scenario, a web-based [e-commerce application](https://github.com/GoogleCloudPlatform/microservices-demo) is utilized to generate normal traffic patterns. Simultaneously, attacks are carried out using one or more compromised, malicious nodes. Traffic traces, sourced from [NSG flow logs](https://learn.microsoft.com/en-us/azure/network-watcher/nsg-flow-logs-overview), are processed and converted into CSV files containing only the relevant properties.  
+The dataset includes 20 distinct scenarios, each designated as an attack or a normal operation. For each scenario, a web-based [e-commerce application](https://github.com/GoogleCloudPlatform/microservices-demo) is utilized to generate normal traffic patterns. Simultaneously, attacks are carried out using one or more compromised, malicious nodes. Traffic traces, sourced from [NSG flow logs](https://learn.microsoft.com/en-us/azure/network-watcher/nsg-flow-logs-overview), are processed and converted into CSV files containing only the relevant properties.  
 
 
 ## Dataset Description
 
 The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using `wget -i Dataset.txt` to download the dataset. The dataset is compressed in a `.tar.gz` format and each file represents a distinct scenario.
 
-After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`. The schema for these files is as follows:  
+After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`, as well as a `ztn_fe_graphs` folder. The schema for these files and folders is as follows:  
 
 
 ### nsg.csv
@@ -41,6 +41,10 @@ After decompression, each folder corresponds to either a normal or an attack sce
 3. `time`: The starting time of each 2-minute window.  
 4. `label`: A `0` indicates normal operation for this IP pair during the 2-minute window, while a `1` denotes the presence of an attack.  
 
+### ztn_fe_graphs
+
+For each time window (e.g., 2 mins), there will be a PKL and CSV file. The PKL file represents the featurized graph and can be loaded with `pickle.load()`. The CSV file contains the edge list and the edge features. These files represent the output of the NetVigil feature extractor.
+
 ## Attack Scenarios
 
 | Attack Description                  | Description                                                                                      | # flows | Ratio malicious |  
@@ -51,18 +55,20 @@ After decompression, each folder corresponds to either a normal or an attack sce
 | UDP DDoS                            | DoS attack with UDP packets (multiple attackers)                                                 | 1473    | 0.0081          |  
 | Distributed Stealth Port Scan       | Run a targeted stealth scan of several key ports across many nodes with SYN packets              | 4069    | 0.0058          |  
 | Distributed Port Scan               | Run a targeted scan of several key ports across many nodes                                       | 4054    | 0.0051          |  
-| Distributed UDP Port Scan           | Run a targeted stealth scan of several key across many nodes with UDP packets                    | 4319    | 0.0050          |  
+| Distributed UDP Port Scan           | Run a targeted stealth scan of several keys across many nodes with UDP packets                    | 4319    | 0.0050          |  
 | Infection Monkey 1                  | Scans key ports and launches network exploits                                                    | 2768    | 0.0122          |  
 | Infection Monkey 2                  | Scans key ports and launches network exploits (target limited number of hosts)                   | 1490    | 0.0107          |  
 | Infection Monkey 3                  | Scans key ports and launches network exploits (mount limited number of exploits)                 | 4677    | 0.0027          |  
 | C&C communication                   | Compromised nodes receive commands, heartbeats, and file updates from C&C server                 | 2163    | 0.0254          |  
 | DNS amplification                   | Attackers send DNS requests and direct responses to victim                                       | 4410    | 0.0825          |  
+| SQL Injection                   | Attackers access the database with SQL injections                                       | --    | --          |  
+| Unauthorized Database Access                   | Attackers access the database without  authorization                                       | --    | --          |  
 
 ## Reference Paper
 
 If you use our benchmark in your work, we would appreciate a reference to the following paper:
 
-Kevin Hsieh, Mike Wong, Santiago Segarra, Sathiya Kumaran Mani, Trevor Eberl, Anatoliy Panasyuk, Ravi Netravali, Ranveer Chandra, and Srikanth Kandula. [NetVigil: Robust and Low-Cost Anomaly Detection for East-West Data Center Security](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/). *USENIX Symposium on Networked Systems Design and Implementation (NSDI), 2024*.
+Kevin Hsieh*, Mike Wong*, Santiago Segarra, Sathiya Kumaran Mani, Trevor Eberl, Anatoliy Panasyuk, Ravi Netravali, Ranveer Chandra, and Srikanth Kandula. [NetVigil: Robust and Low-Cost Anomaly Detection for East-West Data Center Security](https://www.microsoft.com/en-us/research/publication/netvigil-robust-and-low-cost-anomaly-detection-for-east-west-data-center-security/). *USENIX Symposium on Networked Systems Design and Implementation (NSDI), 2024*.
 
 
 ## Contributing
