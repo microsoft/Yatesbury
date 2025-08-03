@@ -11,8 +11,7 @@ The dataset includes 20 distinct scenarios, each designated as an attack or a no
 
 The dataset is available for download from Azure Blob Storage via [this link](Dataset.txt). For efficient data transfer, we suggest using `wget -i Dataset.txt` to download the dataset. The dataset is compressed in a `.tar.gz` format and each file represents a distinct scenario.
 
-After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`, as well as a `ztn_fe_graphs` folder. The schema for these files and folders is as follows:  
-
+After decompression, each folder corresponds to either a normal or an attack scenario and includes two files: `nsg.csv` and `label.csv`, as well as a `ztn_fe_graphs` folder. For attack scenarios, there is also a `netvigil_scores.csv` file. The schema for these files and folders is as follows:  
 
 ### nsg.csv
 
