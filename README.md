@@ -45,6 +45,15 @@ After decompression, each folder corresponds to either a normal or an attack sce
 
 For each time window (e.g., 2 mins), there will be a PKL and CSV file. The PKL file represents the featurized graph and can be loaded with `pickle.load()`. The CSV file contains the edge list and the edge features. These files represent the output of the NetVigil feature extractor.
 
+### netvigil_scores.csv
+
+1. `MinT`: The starting time of each 2-minute window
+2. `LocalIP`: Source IP address
+3. `RemoteIP`: Destination IP address
+4. `Label`: A `0` indicates normal operation for this IP pair during the 2-minute window, while a `1` denotes the presence of an attack.
+5. `Score`: The NetVigil score (reconstruction loss) for this IP pair in the 2-minute window
+
+
 ## Attack Scenarios
 
 | Attack Description                  | Description                                                                                      | # flows | Ratio malicious |  
